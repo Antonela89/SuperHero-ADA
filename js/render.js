@@ -97,7 +97,7 @@ export const renderHeros = (results) => {
                     </div>
 
                     <!-- Botón "Ver más" -->
-                    <button class="mt-4 w-full py-2 bg-comic-pink/80 hover:bg-comic-pink text-white font-bold rounded uppercase text-xs tracking-widest transition-colors backdrop-blur-sm">
+                    <button class="mt-4 w-full py-2 bg-comic-pink/80 hover:bg-comic-pink text-white font-bold rounded uppercase text-xs border border-comic-pink tracking-widest transition-colors backdrop-blur-sm">
                         Ver Ficha Completa
                     </button>
                 </div>
