@@ -256,7 +256,22 @@
     </div>
 
 
+
+    <!-- Cursores personalizados -->
+    <!-- Puntero principal (Punto pequeño) -->
+    <div id="cursor-dot"
+        class="hidden md:flex fixed top-0 left-0 w-2 h-2 bg-comic-pink rounded-full pointer-events-none z-[9999] transform -translate-x-1/2 -translate-y-1/2 animate-pulse">
+    </div>
+
+    <!-- Seguidor (Icono de FontAwesome) -->
+    <div id="cursor-outline"
+        class="hidden md:flex fixed top-0 left-0 w-8 h-8 pointer-events-none z-[9998] transform -translate-x-1/2 -translate-y-1/2 transition-all duration-100 ease-out items-center justify-center text-acento opacity-90 animate-pulse">
+        <!-- Usamos una mira delicada -->
+        <i class="fa-solid fa-crosshairs text-2xl"></i>
+    </div>
+
     <script src="./js/main.js" type="module"></script>
+    <script src="./js/cursor.js" type="module"></script>
 </body>
 
 </html>

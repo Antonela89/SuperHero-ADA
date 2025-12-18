@@ -83,3 +83,44 @@
     background-position: bottom center;
     block-size: 50vh;
 }
+
+/* CURSOR */
+/* Ocultar cursor nativo en PC */
+@media (pointer: fine) {
+    body,
+    a,
+    button,
+    input,
+    select {
+        cursor: none !important;
+    }
+}
+
+/* Efecto cuando el cursor toca un enlace/botón */
+.cursor-hover {
+    transform: translate(-50%, -50%) scale(1.5) !important;
+    opacity: 1 !important;
+    color: #ffffff !important;
+    filter: drop-shadow(0 0 2px var(--primary)) drop-shadow(0 0 8px var(--primary));
+}
+
+.dot-hover {
+    background-color: var(--accent) !important; 
+    opacity: 1 !important; 
+    transform: translate(-50%, -50%) scale(1.2) !important; 
+    box-shadow: 0 0 5px var(--accent); 
+}
+
+.cursor-hover i {
+    animation: spin 4s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
