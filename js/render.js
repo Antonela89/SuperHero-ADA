@@ -1,4 +1,6 @@
-// Nodo del dom
+import { openModal } from './modal.js';
+
+// Nodo del DOM
 const $conteiner = document.getElementById('results-container');
 
 // Función para renderizar los resultados de la api
@@ -32,7 +34,6 @@ export const renderHeros = (results) => {
 		const height = hero.appearance.height[1] || 'N/A';
 		const weight = hero.appearance.weight[1] || 'N/A';
 		const fullName = hero.biography.fullName || hero.name;
-		const work = hero.work?.occupation || 'Sin datos';
 
 		card.className = `group relative h-[400px] w-full overflow-hidden rounded-md border-4 ${borderColor} bg-gray-900 shadow-xl transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:z-10`;
 
@@ -102,6 +103,15 @@ export const renderHeros = (results) => {
                 </div>
             </div>
         `;
+
+        // Captura del botón
+		const $btnDetails = card.querySelector('button');
+
+		// Listener
+		$btnDetails.addEventListener('click', () => {
+			openModal(hero); 
+		});
+
 		// Agregar cada card al contenedor padre
 		$conteiner.appendChild(card);
 	});
