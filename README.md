@@ -75,15 +75,12 @@ Los requisitos mínimos para que el proyecto sea considerado para la entrega son
 
 La API que vamos a utilizar para este proyecto es la **SuperHero API**.
 
-####  रजिस्ट्रेशन Registro
-Debes ingresar a [https://superheroapi.com](https://superheroapi.com), dejar tu email, y copiar tu `access-token` que te otorgan al instante.
+####  Registro
+Debes ingresar a [https://akabab.github.io/superhero-api/api/](https://akabab.github.io/superhero-api/api/)
 
 #### ❓ Cómo usarla
-Para buscar personajes:
-`https://superheroapi.com/api/ACCESS_TOKEN/search/BUSQUEDA`
-
-**Ejemplo:**
-`https://superheroapi.com/api/1234567890123456/search/batman`
+Para buscar todos los personajes:
+`https://akabab.github.io/superhero-api/api/all.json`
 
 #### 📊 Qué datos devuelve
 *   Nombre y nombre real
