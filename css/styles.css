@@ -115,6 +115,75 @@
 
 .animate-heartbeat {
     animation: heart-beat 1s infinite ease-in-out;
+/* CURSOR */
+/* Ocultar cursor nativo en PC */
+@media (pointer: fine) {
+
+    body,
+    a,
+    button,
+    input,
+    select {
+        cursor: none !important;
+    }
+}
+
+/* Efecto cuando el cursor toca un enlace/botón */
+.cursor-hover {
+    transform: translate(-50%, -50%) scale(1.5) !important;
+    opacity: 1 !important;
+    color: #ffffff !important;
+    filter: drop-shadow(0 0 2px var(--primary)) drop-shadow(0 0 8px var(--primary));
+}
+
+.dot-hover {
+    background-color: var(--accent) !important;
+    opacity: 1 !important;
+    transform: translate(-50%, -50%) scale(1.2) !important;
+    box-shadow: 0 0 5px var(--accent);
+}
+
+.cursor-hover i {
+    animation: spin 4s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Scrollbar Personalizado (Cross-Browser) */
+.custom-scrollbar {
+    /* ESTÁNDAR (Firefox) */
+    scrollbar-width: thin;
+    /* Hace la barra finita */
+    scrollbar-color: var(--primary) transparent;
+    /* Color: Rosa (Thumb) - Transparente (Track) */
+}
+
+/* CHROME, EDGE, SAFARI (Webkit) */
+.custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+    /* Para scroll horizontal si hubiera */
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: var(--border-color);
+    border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background-color: var(--primary);
 }
 
 /* Animación de Explosión (La máscara crece y desaparece) */
@@ -123,11 +192,14 @@
         transform: scale(1);
         opacity: 1;
     }
+
     50% {
         opacity: 1;
     }
+
     100% {
-        transform: scale(30); /* Crece muchísimo */
+        transform: scale(30);
+        /* Crece muchísimo */
         opacity: 0;
     }
 }
@@ -143,6 +215,7 @@
         transform: scale(0);
         opacity: 0.8;
     }
+
     100% {
         transform: scale(20);
         opacity: 0;
