@@ -20,18 +20,25 @@ if ($dot && $outline) {
         }, { duration: 500, fill: "forwards" }); 
     });
 
-    // Efecto Hover
-    const interactives = document.querySelectorAll('a, button, input, select, .cursor-pointer');
+document.addEventListener('mouseover', (e) => {
+        // Ingreso a un elemento interactivo
+        const target = e.target.closest('a, button, input, select, .cursor-pointer');
 
-    interactives.forEach(el => {
-        el.addEventListener('mouseenter', () => {
+        if (target) {
+            // Si es interactivo, activar el efecto
             $outline.classList.add('cursor-hover');
-            $dot.classList.add('dot-hover'); 
-        });
+            $dot.classList.add('dot-hover');
+        }
+    });
 
-        el.addEventListener('mouseleave', () => {
+    document.addEventListener('mouseout', (e) => {
+        // Salida de un elemento interactivo
+        const target = e.target.closest('a, button, input, select, .cursor-pointer');
+
+        if (target) {
+            // Desactivar el efecto
             $outline.classList.remove('cursor-hover');
             $dot.classList.remove('dot-hover');
-        });
+        }
     });
 }
