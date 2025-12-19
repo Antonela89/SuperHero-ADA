@@ -136,7 +136,7 @@
         <section id="main-content" class="container mx-auto p-4 hidden min-h-[500px]">
             <div id="info-paginado" class="flex justify-center my-8 animate-fade-in-up"></div>
 
-            <div id="results-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 p-6 gap-6">
+            <div id="results-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 p-6 gap-6">
                 <!-- Aqui se inyectan los resultados con JS -->
             </div>
 
@@ -219,14 +219,16 @@
                 <!-- GitHub -->
                 <a href="https://github.com/Antonela89" target="_blank" rel="noopener noreferrer"
                     aria-label="Ver perfil de GitHub de Antonela Borgogno"
-                    class="text-white text-3xl transition-all duration-300 transform hover:scale-125 hover:-translate-y-1 hover:text-acento hover:drop-shadow-[0_0_10px_var(--accent)]">
+                    class="text-white text-3xl transition-all duration-300 transform active:scale-90 active:text-acento
+                    lg:hover:scale-125 lg:hover:-translate-y-1 lg:hover:text-acento lg:hover:drop-shadow-[0_0_10px_var(--accent)]">
                     <i class="fa-brands fa-github" aria-hidden="true"></i>
                 </a>
 
                 <!-- LinkedIn -->
                 <a href="https://www.linkedin.com/in/antonela-borgogno/" target="_blank" rel="noopener noreferrer"
                     aria-label="Ver perfil de LinkedIn de Antonela Borgogno"
-                    class="text-white text-3xl transition-all duration-300 transform hover:scale-125 hover:-translate-y-1 hover:text-acento hover:drop-shadow-[0_0_10px_var(--accent)]">
+                    class="text-white text-3xl transition-all duration-300 transform active:scale-90 active:text-acento
+                    lg:hover:scale-125 lg:hover:-translate-y-1 lg:hover:text-acento lg:hover:drop-shadow-[0_0_10px_var(--accent)]">
                     <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
                 </a>
 
@@ -242,8 +244,7 @@
 
         <!-- CONTENEDOR PRINCIPAL -->
         <div
-            class="relative w-full max-w-7xl max-h-[90vh] lg:h-[700px] bg-superficie text-texto rounded-md shadow-2xl border-2 border-acento flex flex-col lg:flex-row overflow-y-auto lg:overflow-hidden transition-all scale-100 custom-scrollbar">
-
+            class="relative w-full max-w-7xl max-h-[90vh] lg:h-[600px] bg-superficie text-texto rounded-xl shadow-2xl border-2 border-acento flex flex-col lg:flex-row overflow-y-auto lg:overflow-hidden transition-all scale-100 custom-scrollbar">
             <!-- Botón Cerrar -->
             <button id="close-modal"
                 class="sticky lg:absolute top-4 right-4 z-50 ml-auto lg:ml-0 mb-[-40px] lg:mb-0 text-texto hover:text-comic-pink bg-btn-ui hover:bg-btn-ui-hover rounded-full p-2 transition-colors shadow-lg border border-borde w-10 h-10 flex items-center justify-center">
@@ -251,15 +252,15 @@
             </button>
 
             <!-- COLUMNA 1: IMAGEN -->
-            <div class="w-full lg:w-[350px] bg-acento p-8 flex items-center justify-center flex-shrink-0 relative">
+            <div
+                class="hidden md:flex lg:flex w-full h-48 lg:w-[350px] lg:h-full bg-acento p-4 lg:p-8 items-center justify-center flex-shrink-0 relative">
                 <div
-                    class="hidden lg:flex relative w-full max-w-[500px] aspect-[2/3] rounded-md overflow-hidden group rotate-1 hover:rotate-0 transition-transform duration-500 bg-black">
+                    class="relative w-full max-w-[150px] lg:max-w-[350px] aspect-[2/3] rounded-md border-4 border-acento shadow-[0_0_25px_rgba(251,191,36,0.4)] overflow-hidden bg-black">
                     <img id="modal-img" src="" alt=""
                         class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity">
                     <!-- Brillo interno -->
                     <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-white/10"></div>
                 </div>
-
             </div>
 
             <!-- COLUMNA 2 Y 3: CONTENIDO Y STATS -->
@@ -282,7 +283,7 @@
                     </div>
 
                     <!-- Grid de Datos -->
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-8 mb-8">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mb-8">
                         <div>
                             <h4 class="text-acento text-[10px] font-bold uppercase mb-2 tracking-wider opacity-80">
                                 <i class="fa-solid fa-briefcase mr-1"></i> Ocupación
@@ -301,7 +302,7 @@
                             </h4>
                             <p id="modal-base" class="text-sm text-texto leading-relaxed font-medium">...</p>
                         </div>
-                        <div>
+                        <div class="md:col-span-3 lg:col-span-1">
                             <h4 class="text-acento text-[10px] font-bold uppercase mb-2 tracking-wider opacity-80">
                                 <i class="fa-solid fa-heart mr-1"></i> Parientes
                             </h4>
@@ -332,7 +333,7 @@
                         class="text-xs font-black text-texto uppercase mb-6 opacity-60 tracking-[0.2em] flex items-center gap-2">
                         <i class="fa-solid fa-chart-simple"></i> Powerstats
                     </h3>
-                    <div id="modal-stats" class="grid grid-cols-2 lg:flex lg:flex-col gap-4 pb-4">
+                    <div id="modal-stats" class="grid grid-cols-2 md:grid-cols-3 lg:flex lg:flex-col gap-4 pb-4">
                         <!-- JS inyecta aquí -->
                     </div>
                 </div>

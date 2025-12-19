@@ -66,9 +66,8 @@ export const renderHeros = (results) => {
                     ${fullName}
                 </p>
 
-                <!-- INFORMACIÓN OCULTA (El "Cajón" que sube) -->
-                <!-- height-0 al inicio -->
-                <div class="h-0 opacity-0 transition-all duration-500 group-hover:h-auto group-hover:opacity-100 mt-2"">
+                <!-- INFORMACIÓN OCULTA EN DESKTOP -->
+                <div class="mt-2 transition-all duration-500 h-auto opacity-100 lg:[@media(hover:hover)]:h-0 lg:[@media(hover:hover)]:opacity-0 lg:group-hover:h-auto lg:group-hover:opacity-100">
                 
                 <!-- Separador -->
                 <div class="h-0.5 w-full ${separatorColor} mb-4 rounded-full shadow-[0_0_10px_currentColor]"></div>
@@ -97,7 +96,7 @@ export const renderHeros = (results) => {
                     </div>
 
                     <!-- Botón "Ver más" -->
-                    <button class="mt-4 w-full py-2 bg-comic-pink/80 hover:bg-comic-pink text-white font-bold rounded uppercase text-xs border border-comic-pink tracking-widest transition-colors backdrop-blur-sm">
+                    <button class="mt-4 w-full py-2 bg-comic-pink/80 hover:bg-comic-pink text-white font-bold rounded uppercase text-xs border border-comic-pink tracking-widest transition-colors backdrop-blur-sm active:scale-95">
                         Ver Ficha Completa
                     </button>
                 </div>
