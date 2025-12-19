@@ -9,7 +9,7 @@ export const initDarkMode = () => {
         if ($themeIcon) {
             $themeIcon.innerHTML = isDark
                 ? `<i class="fa-solid fa-sun text-comic-pink group-hover:text-acento"></i>` // Icono sol cuando es oscuro (para pasar a claro)
-                : `<i class="fa-solid fa-moon text-comic-pink group-hover:text-texto"></i>`; // Icono luna cuando es claro (para pasar a oscuro)
+                : `<i class="fa-solid fa-moon text-comic-pink group-hover:text-acento"></i>`; // Icono luna cuando es claro (para pasar a oscuro)
         }
     };
 
