@@ -102,8 +102,6 @@ No requiere configuración extra para evitar problemas de CORS. Funciona perfect
 
 Una aplicación web interactiva para buscar, filtrar y explorar el universo de superhéroes. Este proyecto consume la [SuperHero API](https://akabab.github.io/superhero-api/api/) y presenta los datos con una estética única estilo **Cómic/Cyberpunk**, optimizada para todos los dispositivos.
 
-![Preview del Proyecto](assets/banner.webp)
-
 ## Funcionalidades Principales
 
 ### Búsqueda y Filtrado
