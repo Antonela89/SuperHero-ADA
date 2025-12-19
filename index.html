@@ -212,10 +212,7 @@
 
         <div id="modal-overlay" class="absolute inset-0 bg-gray-900/90 backdrop-blur-sm transition-opacity"></div>
 
-        <!-- CONTENEDOR PRINCIPAL 
-            - max-h-[90vh] y overflow-y-auto: Permite scroll general en móviles muy pequeños.
-            - lg:h-[700px]: Altura fija en PC.
-        -->
+        <!-- CONTENEDOR PRINCIPAL -->
         <div
             class="relative w-full max-w-7xl max-h-[90vh] lg:h-[700px] bg-superficie text-texto rounded-md shadow-2xl border-2 border-acento flex flex-col lg:flex-row overflow-y-auto lg:overflow-hidden transition-all scale-100 custom-scrollbar">
 
@@ -225,42 +222,27 @@
                 <i class="fa-solid fa-xmark text-lg"></i>
             </button>
 
-            <!-- COLUMNA 1: IMAGEN (Centrada con Marco Amarillo) -->
-            <!-- 
-                - bg-fondo: Un color ligeramente distinto al resto del modal.
-                - flex items-center justify-center: CENTRA la imagen vertical y horizontalmente.
-        -->
+            <!-- COLUMNA 1: IMAGEN -->
             <div
-                class="w-full lg:w-[350px] bg-acento border-b lg:border-b-0 lg:border-r border-borde p-8 flex items-center justify-center flex-shrink-0 relative">
-
-                <!-- MARCO AMARILLO (Card) -->
-                <!-- aspect-[2/3]: Mantiene proporción de poster.
-                shadow-acento: Resplandor amarillo.
-            -->
+                class="w-full lg:w-[350px] bg-acento p-8 flex items-center justify-center flex-shrink-0 relative">
                 <div
-                    class="hidden lg:flex relative w-full max-w-[500px] aspect-[2/3] rounded-md border-4 border-acento shadow-[0_0_25px_rgba(251,191,36,0.4)] overflow-hidden group rotate-1 hover:rotate-0 transition-transform duration-500 bg-black">
+                    class="hidden lg:flex relative w-full max-w-[500px] aspect-[2/3] rounded-md overflow-hidden group rotate-1 hover:rotate-0 transition-transform duration-500 bg-black">
                     <img id="modal-img" src="" alt=""
                         class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity">
                     <!-- Brillo interno -->
                     <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-white/10"></div>
                 </div>
 
-                <!-- Decoración de fondo (opcional) -->
-                <div
-                    class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--accent)_0%,_transparent_70%)] opacity-5 pointer-events-none">
-                </div>
             </div>
 
-
             <!-- COLUMNA 2 Y 3: CONTENIDO Y STATS -->
-            <!-- En móvil stackea vertical, en desktop ocupa el resto -->
             <div class="flex-1 flex flex-col lg:flex-row h-auto lg:h-full">
 
                 <!-- SECCIÓN CENTRAL (BIO) -->
                 <div class="flex-1 p-6 lg:p-10 flex flex-col h-full overflow-y-auto custom-scrollbar">
 
                     <!-- Header -->
-                    <div class="mb-8 border-b border-borde pb-6">
+                    <div class="mb-8 border-b border-borde/30 pb-6">
                         <div class="flex flex-col sm:flex-row sm:items-center gap-3 mb-1">
                             <h2 id="modal-name"
                                 class="text-4xl lg:text-5xl font-black text-comic-pink uppercase italic drop-shadow-sm tracking-tighter leading-none break-words">
@@ -317,15 +299,12 @@
                 </div>
 
                 <!-- SECCIÓN DERECHA (STATS) -->
-                <!-- En móvil va abajo de todo. En desktop va a la derecha. -->
                 <div
                     class="w-full lg:w-[280px] bg-fondo border-t lg:border-t-0 lg:border-l border-borde p-6 h-auto lg:h-full overflow-y-auto custom-scrollbar">
                     <h3
                         class="text-xs font-black text-texto uppercase mb-6 opacity-60 tracking-[0.2em] flex items-center gap-2">
                         <i class="fa-solid fa-chart-simple"></i> Powerstats
                     </h3>
-
-                    <!-- En móvil: Grid de 2 columnas. En Desktop: Lista vertical (flex-col) -->
                     <div id="modal-stats" class="grid grid-cols-2 lg:flex lg:flex-col gap-4 pb-4">
                         <!-- JS inyecta aquí -->
                     </div>
@@ -345,7 +324,6 @@
     <!-- Seguidor (Icono de FontAwesome) -->
     <div id="cursor-outline"
         class="hidden md:flex fixed top-0 left-0 w-8 h-8 pointer-events-none z-[9998] transform -translate-x-1/2 -translate-y-1/2 transition-all duration-100 ease-out items-center justify-center text-acento opacity-90 animate-pulse">
-        <!-- Usamos una mira delicada -->
         <i class="fa-solid fa-crosshairs text-2xl"></i>
     </div>
 
