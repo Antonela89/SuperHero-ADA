@@ -40,29 +40,31 @@ export const openModal = (hero) => {
 	// Estilar Badge y Tema según alineación
 	const alignment = hero.biography.alignment;
 	let themeColor = 'bg-acento';
-	let textColor = 'text-gray-900'; // El texto DENTRO del badge debe contrastar con el fondo
+	let textColor = 'text-gray-900';
+	let iconColor = 'text-acento';
 
 	if (alignment === 'good') {
 		themeColor = 'bg-cyan-500';
 		textColor = 'text-white';
+		iconColor = 'text-cyan-400';
 	} else if (alignment === 'bad') {
-		themeColor = 'bg-rose-600';
+		themeColor = 'bg-fuchsia-600';
 		textColor = 'text-white';
+		iconColor = 'text-fuchsia-600';
 	}
 
 	$badge.textContent = alignment;
 	$badge.className = `px-3 py-1 text-xs font-black uppercase rounded-sm shadow-sm ${themeColor} ${textColor}`;
 
-	renderStats(hero.powerstats, themeColor);
+	renderStats(hero.powerstats, themeColor, iconColor);
 
 	$modal.classList.remove('hidden');
 	document.body.style.overflow = 'hidden';
 };
 
-const renderStats = (stats, colorClass) => {
+const renderStats = (stats, colorClass, iconColorClass) => {
 	$statsContainer.innerHTML = '';
 
-	// Mapeo de iconos para cada stat (opcional, le da un toque pro)
 	const icons = {
 		intelligence: 'fa-brain',
 		strength: 'fa-dumbbell',
@@ -83,14 +85,14 @@ const renderStats = (stats, colorClass) => {
 		const statHTML = `
             <div class="bg-superficie p-4 rounded-lg border border-borde flex flex-col justify-between relative overflow-hidden group hover:border-acento hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
                 
-                <div class="absolute -right-4 -bottom-4 text-6xl text-texto opacity-[0.03] rotate-12 group-hover:opacity-[0.1] group-hover:scale-110 group-hover:rotate-0 transition-all duration-500 z-0 pointer-events-none">
-                    <i class="fa-solid ${icon}"></i>
+                <div class="absolute -right-4 -bottom-4 text-6xl text-texto opacity-[0.1] rotate-12 group-hover:opacity-[0.1] group-hover:scale-110 group-hover:rotate-0 transition-all duration-500 z-0 pointer-events-none">
+                    <i class="fa-solid ${icon} ${iconColorClass}"></i>
                 </div>
 
                 <div class="relative z-10">
                     <div class="flex justify-between items-center z-10 mb-2">
                         <span class="text-[8px] sm:text-[9px] font-black text-texto opacity-50 uppercase tracking-widest truncate mr-1">${statName}</span>
-                        <i class="fa-solid ${icon} text-texto opacity-30 text-[10px]"></i>
+                        <i class="fa-solid ${icon} ${iconColorClass} text-[10px]"></i>
                     </div>
 
                     <div class="flex items-end gap-1 sm:gap-2 z-10">
