@@ -113,7 +113,7 @@
                     <!-- Select de Orden -->
                     <div class="relative min-w-[140px]">
                         <select id="sort-select"
-                            class="w-full h-12 pl-4 pr-8 text-texto bg-fondo border-2 border-borde rounded-lg appearance-none focus:outline-none focus:border-acento cursor-pointer">
+                            class="w-full h-12 pl-4 pr-8 text-texto bg-fondo border-2 border-borde rounded-md appearance-none focus:outline-none focus:border-acento cursor-pointer">
                             <option value="az">A - Z</option>
                             <option value="za">Z - A</option>
                         </select>
@@ -126,7 +126,7 @@
 
                     <!-- Botón de Acción -->
                     <button type="submit"
-                        class="w-full sm:w-auto px-8 py-3 bg-comic-pink text-white font-bold uppercase tracking-wider rounded-lg shadow-lg hover:shadow-acento hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-2">
+                        class="w-full sm:w-auto px-8 py-3 bg-comic-pink text-white font-bold uppercase tracking-wider rounded-md shadow-lg hover:shadow-acento hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-2">
                         Buscar <i class="fa-solid fa-arrow-right"></i>
                     </button>
                 </div>
@@ -188,96 +188,135 @@
 
 
 
+
     <!-- MODAL DE FICHA TÉCNICA -->
-    <div id="hero-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6">
+    <div id="hero-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4">
 
-        <!-- Overlay -->
         <div id="modal-overlay" class="absolute inset-0 bg-gray-900/90 backdrop-blur-sm transition-opacity"></div>
-        <div
-            class="relative w-full max-w-7xl max-h-[90vh] bg-superficie text-texto rounded-xl shadow-2xl border-2 border-acento flex flex-col lg:flex-row overflow-y-auto lg:overflow-hidden transition-all scale-100">
 
-            <!-- Botón Cerrar (Sticky en móvil para que siempre se vea al scrollear) -->
+        <!-- CONTENEDOR PRINCIPAL 
+            - max-h-[90vh] y overflow-y-auto: Permite scroll general en móviles muy pequeños.
+            - lg:h-[700px]: Altura fija en PC.
+        -->
+        <div
+            class="relative w-full max-w-7xl max-h-[90vh] lg:h-[700px] bg-superficie text-texto rounded-md shadow-2xl border-2 border-acento flex flex-col lg:flex-row overflow-y-auto lg:overflow-hidden transition-all scale-100 custom-scrollbar">
+
+            <!-- Botón Cerrar -->
             <button id="close-modal"
                 class="sticky lg:absolute top-4 right-4 z-50 ml-auto lg:ml-0 mb-[-40px] lg:mb-0 text-texto hover:text-comic-pink bg-btn-ui hover:bg-btn-ui-hover rounded-full p-2 transition-colors shadow-lg border border-borde w-10 h-10 flex items-center justify-center">
                 <i class="fa-solid fa-xmark text-lg"></i>
             </button>
 
-            <!-- COLUMNA IZQUIERDA: IMAGEN (Poster) -->
-            <div class="w-full h-48 lg:w-[320px] lg:h-full bg-black relative group flex-shrink-0">
-                <img id="modal-img" src="" alt=""
-                    class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity">
+            <!-- COLUMNA 1: IMAGEN (Centrada con Marco Amarillo) -->
+            <!-- 
+                - bg-fondo: Un color ligeramente distinto al resto del modal.
+                - flex items-center justify-center: CENTRA la imagen vertical y horizontalmente.
+        -->
+            <div
+                class="w-full lg:w-[350px] bg-acento border-b lg:border-b-0 lg:border-r border-borde p-8 flex items-center justify-center flex-shrink-0 relative">
+
+                <!-- MARCO AMARILLO (Card) -->
+                <!-- aspect-[2/3]: Mantiene proporción de poster.
+                shadow-acento: Resplandor amarillo.
+            -->
                 <div
-                    class="absolute inset-0 bg-gradient-to-t from-superficie via-transparent to-transparent lg:bg-gradient-to-r">
+                    class="hidden lg:flex relative w-full max-w-[500px] aspect-[2/3] rounded-md border-4 border-acento shadow-[0_0_25px_rgba(251,191,36,0.4)] overflow-hidden group rotate-1 hover:rotate-0 transition-transform duration-500 bg-black">
+                    <img id="modal-img" src="" alt=""
+                        class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity">
+                    <!-- Brillo interno -->
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-white/10"></div>
+                </div>
+
+                <!-- Decoración de fondo (opcional) -->
+                <div
+                    class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--accent)_0%,_transparent_70%)] opacity-5 pointer-events-none">
                 </div>
             </div>
 
-            <!-- COLUMNA DERECHA: CONTENIDO COMPLETO -->
-            <div class="flex-1 p-6 lg:p-6 flex flex-col h-full overflow-y-auto custom-scrollbar">
 
-                <!-- HEADER (Nombre) -->
-                <div class="flex-shrink-0 mb-4 border-b border-white pb-2">
-                    <div class="flex items-center gap-6 mb-1">
-                        <h2 id="modal-name"
-                            class="text-4xl lg:text-6xl font-black text-comic-pink uppercase italic drop-shadow-sm tracking-tighter">
-                            NOMBRE
-                        </h2>
-                        <span id="modal-badge"
-                            class="self-start mt-2 px-3 py-1 text-xs font-bold uppercase rounded-sm border border-borde shadow-sm">...</span>
+            <!-- COLUMNA 2 Y 3: CONTENIDO Y STATS -->
+            <!-- En móvil stackea vertical, en desktop ocupa el resto -->
+            <div class="flex-1 flex flex-col lg:flex-row h-auto lg:h-full">
+
+                <!-- SECCIÓN CENTRAL (BIO) -->
+                <div class="flex-1 p-6 lg:p-10 flex flex-col h-full overflow-y-auto custom-scrollbar">
+
+                    <!-- Header -->
+                    <div class="mb-8 border-b border-borde pb-6">
+                        <div class="flex flex-col sm:flex-row sm:items-center gap-3 mb-1">
+                            <h2 id="modal-name"
+                                class="text-4xl lg:text-5xl font-black text-comic-pink uppercase italic drop-shadow-sm tracking-tighter leading-none break-words">
+                                NOMBRE
+                            </h2>
+                            <span id="modal-badge"
+                                class="self-start sm:mt-1 px-2 py-0.5 text-[10px] font-bold uppercase rounded-sm border border-borde shadow-sm">...</span>
+                        </div>
+                        <p id="modal-fullname" class="text-xl text-texto font-bold opacity-80">Nombre Real</p>
                     </div>
-                    <p id="modal-fullname" class="text-2xl text-texto font-bold opacity-80">Nombre Real</p>
-                </div>
 
-                <!-- DATOS BIOGRÁFICOS -->
-                <div class="mb-4">
-                    <h3
-                        class="text-xs font-black text-texto uppercase mb-2 opacity-50 tracking-widest flex items-center gap-2">
-                        <i class="fa-solid fa-fingerprint"></i> Expediente
-                    </h3>
-
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Grid de Datos -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-8 mb-8">
                         <div>
-                            <h4 class="text-acento text-[10px] font-bold uppercase mb-2 tracking-wider">Ocupación</h4>
-                            <p id="modal-work" class="text-sm text-texto leading-snug font-medium line-clamp-3">...</p>
+                            <h4 class="text-acento text-[10px] font-bold uppercase mb-2 tracking-wider opacity-80">
+                                <i class="fa-solid fa-briefcase mr-1"></i> Ocupación
+                            </h4>
+                            <p id="modal-work" class="text-sm text-texto leading-relaxed font-medium">...</p>
                         </div>
                         <div>
-                            <h4 class="text-acento text-[10px] font-bold uppercase mb-2 tracking-wider">Grupo</h4>
-                            <p id="modal-group" class="text-sm text-texto leading-snug font-medium line-clamp-3">...</p>
+                            <h4 class="text-acento text-[10px] font-bold uppercase mb-2 tracking-wider opacity-80">
+                                <i class="fa-solid fa-users mr-1"></i> Grupo
+                            </h4>
+                            <p id="modal-group" class="text-sm text-texto leading-relaxed font-medium">...</p>
                         </div>
                         <div>
-                            <h4 class="text-acento text-[10px] font-bold uppercase mb-2 tracking-wider">Base</h4>
-                            <p id="modal-base" class="text-sm text-texto leading-snug font-medium line-clamp-3">...</p>
+                            <h4 class="text-acento text-[10px] font-bold uppercase mb-2 tracking-wider opacity-80">
+                                <i class="fa-solid fa-map-location-dot mr-1"></i> Base
+                            </h4>
+                            <p id="modal-base" class="text-sm text-texto leading-relaxed font-medium">...</p>
                         </div>
                         <div>
-                            <h4 class="text-acento text-[10px] font-bold uppercase mb-2 tracking-wider">Parientes</h4>
+                            <h4 class="text-acento text-[10px] font-bold uppercase mb-2 tracking-wider opacity-80">
+                                <i class="fa-solid fa-heart mr-1"></i> Parientes
+                            </h4>
                             <p id="modal-relatives"
-                                class="text-sm text-texto leading-snug font-medium line-clamp-3 hover:line-clamp-none cursor-help transition-all">
+                                class="text-sm text-texto leading-relaxed font-medium line-clamp-4 hover:line-clamp-none transition-all cursor-help bg-fondo/50 p-2 rounded border border-transparent hover:border-borde hover:bg-fondo">
                                 ...</p>
                         </div>
                     </div>
+
+                    <!-- Footer Bio -->
+                    <div class="mt-auto pt-4 border-t border-borde/30 flex justify-between items-end">
+                        <div>
+                            <span class="text-[10px] text-texto opacity-50 uppercase font-bold">Publicado por</span>
+                            <p id="modal-publisher" class="text-base font-bold text-comic-pink">...</p>
+                        </div>
+                        <div class="text-right">
+                            <span class="text-[10px] text-texto opacity-50 uppercase font-bold">Debut</span>
+                            <p id="modal-first-app" class="text-sm text-texto font-medium text-right max-w-[150px]">...
+                            </p>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- Separador / Publicación -->
-                <div class="mt-auto mb-4 pt-2 border-t border-borde/30 flex justify-between items-end">
-                    <div>
-                        <span class="text-[10px] text-texto opacity-50 uppercase font-bold">Publicado por</span>
-                        <p id="modal-publisher" class="text-base font-bold text-comic-pink">...</p>
-                    </div>
-                    <div class="text-right">
-                        <span class="text-[10px] text-texto opacity-50 uppercase font-bold">Debut</span>
-                        <p id="modal-first-app" class="text-sm text-texto font-medium">...</p>
-                    </div>
-                </div>
+                <!-- SECCIÓN DERECHA (STATS) -->
+                <!-- En móvil va abajo de todo. En desktop va a la derecha. -->
+                <div
+                    class="w-full lg:w-[280px] bg-fondo border-t lg:border-t-0 lg:border-l border-borde p-6 h-auto lg:h-full overflow-y-auto custom-scrollbar">
+                    <h3
+                        class="text-xs font-black text-texto uppercase mb-6 opacity-60 tracking-[0.2em] flex items-center gap-2">
+                        <i class="fa-solid fa-chart-simple"></i> Powerstats
+                    </h3>
 
-                <!-- POWERSTATS -->
-                <div class="w-full bg-fondo border-l border-borde p-6 h-auto lg:h-full overflow-y-auto custom-scrollbar flex-shrink-0">
-                    <div id="modal-stats" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
-                        <!-- JS inyecta las 6 cajas aquí -->
+                    <!-- En móvil: Grid de 2 columnas. En Desktop: Lista vertical (flex-col) -->
+                    <div id="modal-stats" class="grid grid-cols-2 lg:flex lg:flex-col gap-4 pb-4">
+                        <!-- JS inyecta aquí -->
                     </div>
                 </div>
 
             </div>
         </div>
     </div>
+
 
     <!-- Cursores personalizados -->
     <!-- Puntero principal (Punto pequeño) -->

@@ -126,53 +126,52 @@
     }
 }
 
-/* SCROLLBAR (Clase custom-scrollbar) */
+/* Scrollbar Personalizado (Cross-Browser) */
 .custom-scrollbar {
-    scrollbar-color: var(--border-color);
+    /* ESTÁNDAR (Firefox) */
     scrollbar-width: thin;
+    /* Hace la barra finita */
+    scrollbar-color: var(--primary) transparent;
+    /* Color: Rosa (Thumb) - Transparente (Track) */
 }
 
-/* Ancho de la barra */
+/* CHROME, EDGE, SAFARI (Webkit) */
 .custom-scrollbar::-webkit-scrollbar {
     width: 6px;
+    height: 6px;
+    /* Para scroll horizontal si hubiera */
 }
 
-/* El carril (fondo) */
 .custom-scrollbar::-webkit-scrollbar-track {
     background: transparent;
 }
 
-/* La barra en sí (Thumb) */
 .custom-scrollbar::-webkit-scrollbar-thumb {
     background-color: var(--border-color);
-    /* Color sutil (gris) */
     border-radius: 10px;
 }
 
-/* Hover en la barra */
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
     background-color: var(--primary);
 }
 
-    /* Se pone Rosa al tocarla */
-    /* Animación de Explosión (La máscara crece y desaparece) */
-    @keyframes comic-explode {
-        0% {
-            transform: scale(1);
-            opacity: 1;
-        }
-
-        50% {
-            opacity: 1;
-        }
-
-        100% {
-            transform: scale(30);
-            /* Crece muchísimo */
-            opacity: 0;
-        }
+/* Animación de Explosión (La máscara crece y desaparece) */
+@keyframes comic-explode {
+    0% {
+        transform: scale(1);
+        opacity: 1;
     }
 
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(30);
+        /* Crece muchísimo */
+        opacity: 0;
+    }
+}
 
 /* Clase utilitaria para activar la animación */
 .animate-explode {
